@@ -1,5 +1,3 @@
-Here is the complete, production-ready GitHub Actions CI/CD workflow file to automate your trajectory testing framework.
-
 name: Multi-Agent Stream Orchestration CI
 
 on:

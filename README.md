@@ -2,9 +2,14 @@
 
 # Multi-Agent Stream Orchestration Framework (MASO)
 
+[![CI](https://github.com/jkelleman/stream-agent-engine-for-wearables/actions/workflows/ci.yml/badge.svg)](https://github.com/jkelleman/stream-agent-engine-for-wearables/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
+[![Tests: pytest](https://img.shields.io/badge/tests-pytest-0A9EDC.svg)](tests)
+[![Async graph](https://img.shields.io/badge/agents-async%20graph-6E40C9.svg)](src/engine.py)
+
 ## TL;DR
 
-MASO is a real-time multi-agent stream orchestration engine optimized for processing high-frequency data using stateful sliding window tokenization and multi-tier semantic memory networks. The framework operates with bounded context windows, deterministic signal compression, and concurrent agent graph execution, enabling sub-millisecond cache performance and quantifiable observability for production MLOps pipelines.
+MASO is a real-time multi-agent stream orchestration engine optimized for processing high-frequency data using stateful sliding window tokenization and multi-tier semantic memory networks. The framework operates with bounded context windows, deterministic signal compression, and concurrent agent graph execution, with a local semantic cache for repeat states and telemetry hooks for observability.
 
 ## Core Use Cases
 
@@ -21,7 +26,7 @@ MASO is a real-time multi-agent stream orchestration engine optimized for proces
 ## Key Benefits
 
 - **Maximized Token Efficiency**: Specialized deserialization parsers minimize context bloating by mapping raw signals straight into dense data vectors.
-- **Sub-Millisecond Cache Performance**: Multi-tier semantic caching layer routes recurrent states instantly, bypassing redundant deep model execution calls to reduce inference overhead.
+- **Semantic Caching**: A multi-tier cache routes recurrent states without re-running the agent graph. Latency hasn't been benchmarked yet (see Scope and gaps).
 - **Quantifiable Observability**: Inherent telemetry hooks actively track client-side compute latency and monitor for viewport or rendering drops under intense data strain.
 
 ## Capabilities
@@ -105,11 +110,11 @@ deterministic rather than an LLM-as-a-judge call.
 
 ## Tests
 
-Install the test dependencies and run the deterministic validation suite:
+Install the test dependencies and run the suite (24 tests: trajectory, benchmark and packaging). CI runs the same suite on every push.
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pytest tests/evaluation/test_trajectory.py -v
+python -m pytest tests/ -v
 ```
 
 ## Production artifacts
