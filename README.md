@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="Live biometric streams, summarized for agents: a heart-rate rolling window compressed into a summary state."></p>
+
 # Multi-Agent Stream Orchestration Framework (MASO)
 
 ## TL;DR
